@@ -8,6 +8,9 @@ pylint = "*"
 
 [packages]
 objectpath = "*"
+requests = "*"
+html2text = "*"
+re = "*"
 
 [requires]
 python_version = "3.7"

@@ -5,34 +5,34 @@ import json
 from objectpath import *
 import os
 
-def getbookmarks():
-    filepath = chromeBookmarks()
-    bookmarks = readFile(filepath)
-
-    printBookmarks(bookmarks)
-    
-    json_file = 'bookmarks.txt'
-    writeFile(json_file,bookmarks)
-
-def chromeBookmarks():
-    return str(Path.home())+'/.config/google-chrome/Default/Bookmarks'
-
-def printBookmarks(bookmarks):
-    print(bookmarks)
-
-def readFile(filepath):
-     with open(filepath) as f:
-        data = json.load(f)
-        jsonnn_tree = Tree(data)
-
-        bookmarks = tuple(jsonnn_tree.execute('$..url')) #search for url key and put the results in a tuple
+def getBookmarks():
+        filepath = chromeBookmarks()
+        bookmarks = readFile(filepath)
         return bookmarks
 
-def writeFile(filepath,bookmarks):
-    with open(filepath,'w') as f:
-        f.write(str(bookmarks))
+def chromeBookmarks():
+        return str(Path.home())+'/.config/google-chrome/Default/Bookmarks'
+
+# connected to the chromeBookmarks
+def readFile(filepath):
+        with open(filepath) as f:
+                data = json.load(f)
+                jsonnn_tree = Tree(data)
+
+                bookmarks = tuple(jsonnn_tree.execute('$..url')) #search for url key and put the results in a tuple
+                return bookmarks
+                
+def printBookmarks():
+        bookmarks = getbookmarks()
+        print(bookmarks)
+
+def writeFile():
+        bookmarks = getbookmarks()
+        json_file = 'bookmarks.txt'
+        with open(json_file,'w') as f:
+                f.write(str(bookmarks))
 
 if __name__ == "__main__":
-    getbookmarks()
+        getBookmarks()
 
 
