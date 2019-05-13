@@ -23,16 +23,14 @@ def readFile(filepath):
                 return bookmarks
                 
 def printBookmarks():
-        bookmarks = getbookmarks()
+        bookmarks = getBookmarks()
         print(bookmarks)
 
 def writeFile():
-        bookmarks = getbookmarks()
+        bookmarks = getBookmarks()
         json_file = 'bookmarks.txt'
         with open(json_file,'w') as f:
                 f.write(str(bookmarks))
 
 if __name__ == "__main__":
         getBookmarks()
-
-
