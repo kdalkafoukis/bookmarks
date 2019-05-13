@@ -5,7 +5,7 @@ import html2text
 import re
 
 from getbookmarks import getBookmarks
-from getbookmarks import printBookmarks
+# from getbookmarks import printBookmarks
 
 def filteredText(url): #take a website and tranform it to text
     r = requests.get(url)   #make the request
@@ -26,8 +26,10 @@ def filteredText(url): #take a website and tranform it to text
     return " ".join(final_text)         #make the array text again
 
 bookmarks = getBookmarks()
-length = len(bookmarks)
-# printBookmarks()
 
-text1 = filteredText(bookmarks[0])
-print(text1)
+text = filteredText(bookmarks[0])
+print(text)
+
+# for bookmark in bookmarks:
+#     text = filteredText(bookmark)
+#     print(text)
