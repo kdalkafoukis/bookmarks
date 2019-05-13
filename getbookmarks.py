@@ -5,7 +5,7 @@ import json
 from objectpath import *
 import os
 
-def main():
+def getbookmarks():
     filepath = chromeBookmarks()
     bookmarks = readFile(filepath)
 
@@ -17,7 +17,7 @@ def main():
 def chromeBookmarks():
     return str(Path.home())+'/.config/google-chrome/Default/Bookmarks'
 
-def printBookmarks():
+def printBookmarks(bookmarks):
     print(bookmarks)
 
 def readFile(filepath):
@@ -33,6 +33,6 @@ def writeFile(filepath,bookmarks):
         f.write(str(bookmarks))
 
 if __name__ == "__main__":
-    main()
+    getbookmarks()
 
 
