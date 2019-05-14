@@ -32,6 +32,5 @@ def filteredText(url): #take a website and tranform it to text
 bookmarks = getBookmarks()
 
 for bookmark in bookmarks:
-    
     text = filteredText(bookmark)
     print(text)
