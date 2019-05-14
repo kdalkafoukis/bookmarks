@@ -1,2 +1,4 @@
 bookmarks.txt
 .vscode
+*.pyc
+__pycache__
