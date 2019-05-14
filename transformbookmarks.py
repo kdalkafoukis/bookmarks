@@ -26,7 +26,7 @@ def filteredText(url): #take a website and tranform it to text
                 final_text.append(temp)
 
         return " ".join(final_text)         #make the array text again
-    except ( requests.exceptions.RequestException) as e:
+    except requests.exceptions.RequestException:
         pass
 
 bookmarks = getBookmarks()

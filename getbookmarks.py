@@ -2,7 +2,7 @@
 
 from pathlib import Path
 import json
-from objectpath import *
+from objectpath import Tree
 import os
 
 def getBookmarks():
