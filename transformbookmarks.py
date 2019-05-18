@@ -4,13 +4,21 @@ import requests
 import html2text
 import re
 
-from getbookmarks import getBookmarks
-# from getbookmarks import printBookmarks
+def transformBookmarks(url):
+    return filteredText(url)
+
+def aggregateSameWords(text):
+    obj = {}    # keys the words, values the num of showed word in the text
+    for word in text:
+        if word not in obj:
+            obj[word] = 1
+        else:
+            obj[word] = obj[word] + 1
+    return obj
 
 def filteredText(url): #take a website and tranform it to text
     try:
         r = requests.get(url,verify= False)   #make the request
-        # r = requests.get(url)   #make the reques
 
         text_maker = html2text.HTML2Text()
         text_maker.ignore_links = True
@@ -23,14 +31,12 @@ def filteredText(url): #take a website and tranform it to text
         for i in splitted_text:             #clear the text
             temp = re.sub("[^A-Za-z]", "", i)
             if (temp != ''):
-                final_text.append(temp)
+                lowercase = temp.lower()    #new addition
+                final_text.append(lowercase)
 
-        return " ".join(final_text)         #make the array text again
+        # res = " ".join(final_text)  #make the array text again
+        # res = final_text
+        res = aggregateSameWords(final_text)
+        return res    
     except requests.exceptions.RequestException:
         pass
-
-bookmarks = getBookmarks()
-
-for bookmark in bookmarks:
-    text = filteredText(bookmark)
-    print(text)

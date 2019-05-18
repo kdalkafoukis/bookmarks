@@ -5,9 +5,12 @@ import json
 from objectpath import Tree
 import os
 
-def getBookmarks():
-        filepath = chromeBookmarks()
-        bookmarks = readFile(filepath)
+def getBookmarks(browser):
+        if (browser == "chrome"):
+                filepath = chromeBookmarks()
+                bookmarks = readFile(filepath)
+        else:
+                bookmarks = []
         # print(bookmarks)
         return bookmarks 
 
@@ -33,6 +36,3 @@ def arrayOfBookmarks(data):
                         filteredBookmarks.append(obj)  # add the object with keys
 
         return filteredBookmarks   
-
-if __name__ == "__main__":
-        getBookmarks()
