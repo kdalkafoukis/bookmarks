@@ -9,7 +9,7 @@
 
 ### set up mongo db
 
-[mongo](https://hub.docker.com/_/mongo)
+[official mongodb docker](https://hub.docker.com/_/mongo)
 
 - `docker pull mongo`
 - `docker run --name mongo -p 27017:27017 -d mongo`

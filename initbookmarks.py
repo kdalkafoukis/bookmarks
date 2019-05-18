@@ -1,3 +1,6 @@
+# this script gets the saved bookmarks and saves the text
+# from every url to the database
+ 
 from getbookmarks import getBookmarks
 from transformbookmarks import transformBookmarks
 from createbookmarksdb import insertDocument
@@ -20,3 +23,5 @@ def insertAll():
 
 bookmarks = getBookmarks("chrome")
 insertAll()
+
+# misses created,moddified

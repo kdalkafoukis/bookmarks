@@ -1,4 +1,3 @@
-import datetime
 from pymongo import MongoClient
 
 def insertDocument(bookmark):
