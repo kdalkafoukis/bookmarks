@@ -2,8 +2,10 @@
 
 ### install app
 
+- install python3.7 and pipenv
 - `pipenv install --python 3.7`
-- `pipenv install`
+- `pipenv shell`
+- `python initbookmarks.py`
 
 ### set up mongo db
 
