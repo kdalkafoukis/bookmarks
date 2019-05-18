@@ -8,29 +8,31 @@ import os
 def getBookmarks():
         filepath = chromeBookmarks()
         bookmarks = readFile(filepath)
-        return bookmarks
+        # print(bookmarks)
+        return bookmarks 
 
 def chromeBookmarks():
         return str(Path.home())+'/.config/google-chrome/Default/Bookmarks'
 
-# connected to the chromeBookmarks
 def readFile(filepath):
         with open(filepath) as f:
-                data = json.load(f)
-                jsonnn_tree = Tree(data)
+                jsondata = json.load(f)
+                data = arrayOfBookmarks(jsondata)
+                return data
 
-                bookmarks = tuple(jsonnn_tree.execute('$..url')) #search for url key and put the results in a tuple
-                return bookmarks
-                
-def printBookmarks():
-        bookmarks = getBookmarks()
-        print(bookmarks)
+def arrayOfBookmarks(data):
+        jsonnn_tree = Tree(data)
+        bookmarks = list(jsonnn_tree.execute('$..*'))  # flat the tree
+        filteredBookmarks = []
+        keysToMatch = ("name","url","date_added","id","meta_info")
+        for bookmark in bookmarks:  # search it
+                obj = {}        
+                if all (key in bookmark for key in keysToMatch):  # filter keys
+                        for k in keysToMatch:
+                                obj[k] = bookmark[k]
+                        filteredBookmarks.append(obj)  # add the object with keys
 
-def writeFile():
-        bookmarks = getBookmarks()
-        json_file = 'bookmarks.txt'
-        with open(json_file,'w') as f:
-                f.write(str(bookmarks))
+        return filteredBookmarks   
 
 if __name__ == "__main__":
         getBookmarks()

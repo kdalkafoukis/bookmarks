@@ -10,7 +10,6 @@ pylint = "*"
 objectpath = "*"
 requests = "*"
 html2text = "*"
-re = "*"
 pymongo = "*"
 
 [requires]
