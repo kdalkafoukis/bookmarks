@@ -18,6 +18,9 @@ requests = "*"
 html2text = "*"
 pymongo = "*"
 pytest = "*"
+aiohttp = "*"
+cchardet = "*"
+aiodns = "*"
 
 [requires]
 python_version = "3.7"
