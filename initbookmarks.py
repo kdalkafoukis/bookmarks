@@ -7,6 +7,6 @@ bookmarks = getBookmarks("chrome")
 for arg in argv[:]:
     if (arg == "-ia"):
         insertAll(bookmarks)
-else:
-    testInsertOne(bookmarks)
+    else:
+        testInsertOne(bookmarks)
 
