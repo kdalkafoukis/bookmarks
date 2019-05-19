@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [scripts]
+test = "pytest -q"
 init_bookmarks = "python initbookmarks.py -ia"
 test_init_bookmarks = "python initbookmarks.py"
 test_find_bookmark = "python test_script.py"
@@ -16,7 +17,7 @@ objectpath = "*"
 requests = "*"
 html2text = "*"
 pymongo = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"
-
