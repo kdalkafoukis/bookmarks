@@ -5,7 +5,7 @@ import html2text
 import re
 
 def transformBookmarks(url):
-    return filteredText(url)
+    return fetchAndFilterText(url)
 
 def aggregateSameWords(text):
     obj = {}    # keys the words, values the num of showed word in the text
@@ -16,7 +16,7 @@ def aggregateSameWords(text):
             obj[word] = obj[word] + 1
     return obj
 
-def filteredText(url): #take a website and tranform it to text
+def fetchAndFilterText(url): #take a website and tranform it to text
     try:
         r = requests.get(url,verify= False)   #make the request
 
