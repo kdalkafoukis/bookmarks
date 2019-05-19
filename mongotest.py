@@ -5,8 +5,9 @@
 
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
+from config import config
 
+client = MongoClient(config['mongodb_url'], config['mongodb_port'])
 db = client.bookmarks
 
 print(db)

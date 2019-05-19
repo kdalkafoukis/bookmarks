@@ -5,13 +5,15 @@ from datetime import datetime
 from transformbookmarks import transformBookmarks
 from mongodbscripts import insertDocument
 
+from config import config
+
 def testInsertOne(bookmarks):
     url = bookmarks[0]['url']
     text = transformBookmarks(url)
     first_bookmark = bookmarks[0]
     if (text):
-        database_name = 'bookmarks'
-        collection_name = 'testdb'
+        database_name = config['bookmarks_test_db']
+        collection_name = config['bookmarks_test_collection']
 
         first_bookmark["text"] = text
         first_bookmark["created"] = datetime.utcnow()
@@ -25,8 +27,8 @@ def insertAll(bookmarks):
         url = bookmark['url']
         text = transformBookmarks(url)
         if (text):
-                database_name = 'bookmarks'
-                collection_name = 'bookmarks'
+                database_name = config['bookmarks_db']
+                collection_name = config['bookmarks_collection']
 
                 bookmark["text"] = text
                 bookmark["created"] = datetime.utcnow()

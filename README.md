@@ -1,7 +1,7 @@
 # bookmarks
 
 ### git  
-- install [github](https://git-scm.com/downloads)
+- install [git](https://git-scm.com/downloads)
 - `git clone git@github.com:kdalkafoukis/bookmarks.git`
 
 ### install app  

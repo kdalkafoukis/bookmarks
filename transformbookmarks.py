@@ -4,6 +4,8 @@ import requests
 import html2text
 import re
 
+from config import config
+
 def transformBookmarks(url):
     return fetchAndFilterText(url)
 
@@ -29,10 +31,12 @@ def fetchAndFilterText(url): #take a website and tranform it to text
 
         final_text = []
         for i in splitted_text:             #clear the text
-            temp = re.sub("[^A-Za-z]", "", i)
+            temp = re.sub(config['re_rule'], "", i)
             if (temp != ''):
-                lowercase = temp.lower()    #new addition
-                final_text.append(lowercase)
+                res = temp
+                if (config['lowercase']==True):
+                    res = temp.lower()    #new addition
+                final_text.append(res)
 
         # res = " ".join(final_text)  #make the array text again
         # res = final_text

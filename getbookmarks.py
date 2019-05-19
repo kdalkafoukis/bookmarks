@@ -11,10 +11,13 @@ def getBookmarks(browser):
                 bookmarks = readFile(filepath)
         else:
                 bookmarks = []
-        # print(bookmarks)
+                
         return bookmarks 
 
 def chromeBookmarks():
+        # if pwd and file with bookmarks exist return it else create 
+        # a file and copy it from the original filepath 
+        # (maybe check for day file modified to update it)
         return str(Path.home())+'/.config/google-chrome/Default/Bookmarks'
 
 def readFile(filepath):

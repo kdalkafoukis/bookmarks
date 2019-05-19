@@ -19,6 +19,7 @@ def findDocuments(key,db_name,collection_name):
     
     condition = True
     first_res = {}
+
     for result in results:
         # keysToMatch = ("quantum")
         # if all (bookmark['text'] and key in bookmark['text'].keys() for key in keysToMatch):  # filter keys
@@ -32,7 +33,10 @@ def findDocuments(key,db_name,collection_name):
     exec_end = datetime.now()
 
     time = exec_end - exec_start
+    
     print('time: ',time,'\n','key: ',key,'\n','first result: ',first_res)
+
+    return results
 
 def copyCollections(db_old,db_new,collection_old,collection_new):
     client = MongoClient()
