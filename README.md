@@ -4,6 +4,9 @@
 - install [git](https://git-scm.com/downloads)
 - `git clone git@github.com:kdalkafoukis/bookmarks.git`
 
+### travis  
+- install [travis](https://docs.travis-ci.com/user/languages/python/) for python
+
 ### install app  
 
 - install [python3.7](https://www.python.org/) and [pipenv](https://docs.pipenv.org/en/latest/install/#installing-pipenv)
