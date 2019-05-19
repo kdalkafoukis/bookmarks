@@ -7,10 +7,10 @@
 - `pipenv shell`  
 
 test insert one bookmark to test db in mongo db
-- `python initbookmarks.py`  
+- `pipenv run test_init_bookmarks`  
 
 insert all bookmarks to mongo db
-- `python initbookmarks.py -ia`
+- `pipenv run init_bookmarks`
 
 ### set up mongo db
 
