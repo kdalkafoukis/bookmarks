@@ -1,9 +1,10 @@
 from pymongo import MongoClient
 from datetime import datetime
+from config import config
 
 def insertDocument(document,db_name,collection_name):
     try:
-        client = MongoClient()
+        client = MongoClient(config['mongodb_url'], config['mongodb_port'])
         db = client[db_name]
         collection = db[collection_name]
         collection.insert_one(document)
@@ -12,7 +13,7 @@ def insertDocument(document,db_name,collection_name):
 
 def findDocuments(key,db_name,collection_name):
     try:
-        client = MongoClient()
+        client = MongoClient(config['mongodb_url'], config['mongodb_port'])
         db = client[db_name]
 
         collection = db[collection_name]

@@ -3,7 +3,7 @@
 from pathlib import Path
 import json
 from objectpath import Tree
-import os
+from os import getcwd
 from shutil import copyfile
 
 def getBookmarks(browser):
@@ -19,7 +19,7 @@ def chromeBookmarks():
          # maybe check for day file modified to update it
         file_chrome = str(Path.home()) + '/.config/google-chrome/Default/Bookmarks'
         file_path_src = Path(file_chrome)
-        file_path_dst = Path(os.getcwd() + '/bookmarks.json')
+        file_path_dst = Path(getcwd() + '/bookmarks.json')
 
         if not file_path_dst.is_file() and file_path_src.is_file():
                 copyfile(file_path_src, file_path_dst)

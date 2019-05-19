@@ -1,4 +1,5 @@
-# bookmarks
+# bookmarks ![TravisCI status](https://travis-ci.org/kdalkafoukis/bookmarks.svg?branch=master)  
+
 
 ### git  
 - install [git](https://git-scm.com/downloads)
