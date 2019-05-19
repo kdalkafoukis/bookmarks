@@ -4,6 +4,7 @@ from pathlib import Path
 import json
 from objectpath import Tree
 import os
+from shutil import copyfile
 
 def getBookmarks(browser):
         if (browser == "chrome"):
@@ -15,16 +16,25 @@ def getBookmarks(browser):
         return bookmarks 
 
 def chromeBookmarks():
-        # if pwd and file with bookmarks exist return it else create 
-        # a file and copy it from the original filepath 
-        # (maybe check for day file modified to update it)
-        return str(Path.home())+'/.config/google-chrome/Default/Bookmarks'
+         # maybe check for day file modified to update it
+        file_chrome = str(Path.home()) + '/.config/google-chrome/Default/Bookmarks'
+        file_path_src = Path(file_chrome)
+        file_path_dst = Path(os.getcwd() + '/bookmarks.json')
+
+        if not file_path_dst.is_file() and file_path_src.is_file():
+                copyfile(file_path_src, file_path_dst)
+
+        res = file_path_dst
+        return res
 
 def readFile(filepath):
-        with open(filepath) as f:
-                jsondata = json.load(f)
-                data = arrayOfBookmarks(jsondata)
-                return data
+        try:
+                with open(filepath) as f:
+                        jsondata = json.load(f)
+                        data = arrayOfBookmarks(jsondata)
+                        return data
+        except:
+                return []
 
 def arrayOfBookmarks(data):
         jsonnn_tree = Tree(data)

@@ -7,7 +7,9 @@ from pymongo import MongoClient
 
 from config import config
 
-client = MongoClient(config['mongodb_url'], config['mongodb_port'])
-db = client.bookmarks
-
-print(db)
+try:
+    client = MongoClient(config['mongodb_url'], config['mongodb_port'])
+    db = client.bookmarks
+    print(db)
+except:
+    pass
