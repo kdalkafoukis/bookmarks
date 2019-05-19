@@ -4,8 +4,13 @@
 
 - install python3.7 and pipenv
 - `pipenv install --python 3.7`
-- `pipenv shell`
-- `python initbookmarks.py`
+- `pipenv shell`  
+
+test insert one bookmark to test db in mongo db
+- `python initbookmarks.py`  
+
+insert all bookmarks to mongo db
+- `python initbookmarks.py -ia`
 
 ### set up mongo db
 

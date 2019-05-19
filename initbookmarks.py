@@ -1,27 +1,8 @@
-# this script gets the saved bookmarks and saves the text
-# from every url to the database
- 
-from getbookmarks import getBookmarks
-from transformbookmarks import transformBookmarks
-from createbookmarksdb import insertDocument
+from sys import argv
+from createbookmarksdb import insertAll, testInsertOne
+for arg in argv[:]:
+    if (arg == "-ia"):
+        insertAll()
+else:
+    testInsertOne()
 
-def testInsertOne():
-    url = bookmarks[0]['url']
-    text = transformBookmarks(url)
-    bookmarks[0]["text"] = text
-
-    insertDocument(bookmarks[0])
-    print(bookmarks[0])
-
-
-def insertAll():
-    for bookmark in bookmarks:
-        url = bookmark['url']
-        text = transformBookmarks(url)
-        bookmark["text"] = text
-        insertDocument(bookmark)
-
-bookmarks = getBookmarks("chrome")
-insertAll()
-
-# misses created,moddified
