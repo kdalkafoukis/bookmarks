@@ -3,9 +3,9 @@
 # http://api.mongodb.com/python/current/tutorial.html
 # test the mongodb DB with pymongo library 
 
-from pymongo import MongoClient
+from scripts.config import config
 
-from config import config
+from pymongo import MongoClient
 
 try:
     client = MongoClient(config['mongodb_url'], config['mongodb_port'])

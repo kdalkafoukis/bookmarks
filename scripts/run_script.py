@@ -1,5 +1,6 @@
-from mongodbscripts import findDocuments
-from config import config
+from scripts.config import config
+
+from mongodb.mongodbscripts import findDocuments
 
 key = 'docker'
 db_name = config['bookmarks_db']

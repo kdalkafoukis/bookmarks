@@ -1,7 +1,9 @@
+from scripts.config import config
+
 from sys import argv
-from createbookmarksdb import insertAll, testInsertOne
-from getbookmarks import getBookmarks
-from config import config
+
+from scripts.createbookmarksdb import insertAll, testInsertOne
+from scripts.getbookmarks import getBookmarks
 
 bookmarks = getBookmarks(config['browser'])
 

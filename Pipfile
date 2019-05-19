@@ -5,8 +5,8 @@ verify_ssl = true
 
 [scripts]
 test = "pytest -q"
-init_bookmarks = "python initbookmarks.py -ia"
-test_init_bookmarks = "python initbookmarks.py"
+init_bookmarks = "bash -c \"python initbookmarks.py -ia \""
+test_init_bookmarks = "bash -c \"python initbookmarks.py \""
 test_find_bookmark = "python test_script.py"
 
 [dev-packages]

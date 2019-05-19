@@ -1,11 +1,11 @@
 # this script gets the saved bookmarks and saves the text
 # from every url to the database
+from scripts.config import config
+
 from datetime import datetime
 
-from transformbookmarks import transformBookmarks
-from mongodbscripts import insertDocument
-
-from config import config
+from scripts.transformbookmarks import transformBookmarks
+from mongodb.mongodbscripts import insertDocument
 
 def testInsertOne(bookmarks):
     url = bookmarks[0]['url']

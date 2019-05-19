@@ -1,10 +1,10 @@
 #!/usr/bin/env python3.7
 
+from scripts.config import config
+
 import requests
 import html2text
 import re
-
-from config import config
 
 def transformBookmarks(url):
     return fetchAndFilterText(url)

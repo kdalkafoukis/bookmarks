@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 from datetime import datetime
-from config import config
+from scripts.config import config
 
 def insertDocument(document,db_name,collection_name):
     try:
