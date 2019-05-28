@@ -7,7 +7,7 @@ verify_ssl = true
 test = "pytest -q"
 init_bookmarks = "bash -c \"python initbookmarks.py -ia \""
 test_init_bookmarks = "bash -c \"python initbookmarks.py \""
-test_find_bookmark = "python test_script.py"
+test_find_bookmark = "bash -c \"python run_script.py \""
 
 [dev-packages]
 pylint = "*"
@@ -21,6 +21,8 @@ pytest = "*"
 aiohttp = "*"
 cchardet = "*"
 aiodns = "*"
+flask = "*"
+celery = "*"
 
 [requires]
 python_version = "3.7"
