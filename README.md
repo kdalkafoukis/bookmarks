@@ -35,3 +35,7 @@ find a test bookmark
 ### build docker
 
 - `docker build -t bookmarks .`
+
+### chrome extension
+
+- `https://developer.chrome.com/extensions/getstarted`
