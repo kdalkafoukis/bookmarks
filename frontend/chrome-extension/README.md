@@ -1,8 +1,3 @@
-
-### current bug
-
-- the bar doesnt react well in scrolling
-
 ### help  
 
 - in url bar write `chrome://extensions/` and manage the extensions

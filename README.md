@@ -30,7 +30,7 @@ find a test bookmark
 - `docker pull mongo`
 - `docker run --name mongo -p 27017:27017 -d mongo`
 - `docker restart mongo`
-
+-  run terminal `docker exec -it mongo /bin/bash`
 
 ### build docker
 
