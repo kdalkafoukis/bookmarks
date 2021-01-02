@@ -7,7 +7,7 @@ from scripts.getbookmarks import getBookmarks
 
 bookmarks = getBookmarks(config['browser'])
 
-for arg in argv[:]:
+for arg in argv[1:]:
     if (arg == "-ia"):
         insertAll(bookmarks)
     else:
