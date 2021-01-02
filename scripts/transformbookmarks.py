@@ -3,6 +3,8 @@
 from scripts.config import config
 
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 import html2text
 import re
 
