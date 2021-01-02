@@ -16,11 +16,11 @@ def getBookmarks(browser):
         return bookmarks 
 
 def chromeBookmarks():
-         # maybe check for day file modified to update it
-        file_chrome = str(Path.home()) + '/.config/google-chrome/Default/Bookmarks'
+        # maybe check for day file modified to update it
+        file_chrome = str(Path.home()) + '/Library/Application Support/Google/Chrome/Default/Bookmarks' #mac
+        # file_chrome = str(Path.home()) + '/.config/google-chrome/Default/Bookmarks' #ubuntu
         file_path_src = Path(file_chrome)
         file_path_dst = Path(getcwd() + '/bookmarks.json')
-
         if not file_path_dst.is_file() and file_path_src.is_file():
                 copyfile(file_path_src, file_path_dst)
 
