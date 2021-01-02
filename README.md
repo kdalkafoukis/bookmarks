@@ -31,6 +31,7 @@ find a test bookmark
 - `docker run --name mongo -p 27017:27017 -d mongo`
 - `docker restart mongo`
 -  run terminal `docker exec -it mongo /bin/bash`
+-  dublicate db `mongodump --host "hostname" --port "port"` and then `mongorestore dump`
 
 ### build docker
 
