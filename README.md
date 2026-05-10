@@ -32,11 +32,17 @@ macOS / Linux / Windows), fetches each URL with `httpx`, and stores the
 extracted main text in `bookmarks.db` (created in the project root).
 
 ```sh
-.venv/bin/bookmarks-index                  # incremental — skips anything already attempted
-.venv/bin/bookmarks-index --limit 50       # only index the first 50 not-yet-attempted
-.venv/bin/bookmarks-index --retry-failed   # also retry previous failures (skip only successes)
-.venv/bin/bookmarks-index --force          # re-fetch everything
+.venv/bin/bookmarks-index                          # incremental — skips anything already attempted
+.venv/bin/bookmarks-index --limit 50               # only index the first 50 not-yet-attempted
+.venv/bin/bookmarks-index --retry-failed           # also retry previous failures (skip only successes)
+.venv/bin/bookmarks-index --retry-only=transient   # retry only transient failures (429, 5xx, timeouts)
+.venv/bin/bookmarks-index --retry-only=transient --slow   # same, but with reduced concurrency + delay
+.venv/bin/bookmarks-index --force                  # re-fetch everything
 ```
+
+`--slow` drops concurrency from 10 → 3 and adds a 0.5 s gap between
+request starts. Use it with `--retry-only=transient` when servers were
+returning 429s.
 
 Dedup key is Chrome's stable `chrome_id`. By default the indexer skips
 anything that already has a `fetch_status` row in the DB — so failed
