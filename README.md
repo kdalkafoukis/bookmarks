@@ -71,6 +71,73 @@ Listens on `http://127.0.0.1:7777`. Endpoints:
 The popup expects the local server to be running on
 `http://127.0.0.1:7777`. If it isn't, the popup shows an error.
 
+## Debugging
+
+### Background runs and logs
+
+If you launch the indexer or server in the background with stdout
+redirected to a file, Python block-buffers stdout and `tail -f` will
+look stuck. Force line-buffered output with `-u` or
+`PYTHONUNBUFFERED=1`:
+
+```sh
+.venv/bin/python -u -m backend.index_runner > /tmp/bookmarks-index.log 2>&1 &
+.venv/bin/python -u -m backend.main         > /tmp/bookmarks-server.log 2>&1 &
+
+tail -f /tmp/bookmarks-index.log
+tail -f /tmp/bookmarks-server.log
+```
+
+In an interactive terminal (no redirect) progress prints fine, no flag needed.
+
+### Live progress without the log
+
+Every fetch commits to SQLite immediately, so the DB is the source of truth:
+
+```sh
+sqlite3 bookmarks.db "SELECT fetch_status, COUNT(*) FROM bookmarks GROUP BY fetch_status ORDER BY 2 DESC"
+sqlite3 bookmarks.db "SELECT COUNT(*) FROM bookmarks WHERE fetch_status='ok'"
+```
+
+Or hit the server:
+
+```sh
+curl -s http://127.0.0.1:7777/stats
+```
+
+### Inspect specific rows
+
+```sh
+# What did we pull for a given URL?
+sqlite3 bookmarks.db "SELECT name, fetch_status, length(content) FROM bookmarks WHERE url LIKE '%github.com%' LIMIT 10"
+
+# Recent failures
+sqlite3 bookmarks.db "SELECT fetch_status, name, url FROM bookmarks WHERE fetch_status != 'ok' ORDER BY indexed_at DESC LIMIT 20"
+```
+
+### Test search directly
+
+```sh
+curl -s 'http://127.0.0.1:7777/search?q=oauth%20refresh&limit=5' | python3 -m json.tool
+```
+
+### Port 7777 already in use
+
+The server logs `[Errno 48] address already in use` if it's already running:
+
+```sh
+lsof -ti :7777 | xargs kill
+```
+
+### Reset
+
+The DB is gitignored. To start over:
+
+```sh
+rm bookmarks.db bookmarks.db-shm bookmarks.db-wal
+.venv/bin/bookmarks-index
+```
+
 ## Layout
 
 ```
@@ -78,4 +145,5 @@ backend/         FastAPI app, SQLite/FTS5 schema, indexer
 extension/       Manifest V3 Chrome extension (popup-only)
 pyproject.toml   Dependencies + console scripts
 bookmarks.db     SQLite database (gitignored, created on first run)
+LLM_ROADMAP.md   Forward plan for embeddings + Claude `/ask` layers
 ```
