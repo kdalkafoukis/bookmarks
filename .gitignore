@@ -1,5 +1,12 @@
-bookmarks.json
-.vscode
+__pycache__/
 *.pyc
 *.pytest_cache
-__pycache__
+.venv/
+.vscode/
+
+bookmarks.db
+bookmarks.db-shm
+bookmarks.db-wal
+bookmarks.json
+
+.DS_Store
